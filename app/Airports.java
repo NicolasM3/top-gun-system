@@ -43,17 +43,17 @@ public class Airports
 		return flights.toString();
 	}
 	
-	public void addFlight(String idCity, int numFlight) throws Exception
+	public void addFlight(String cityName, int numFlight) throws Exception
 	{
 		try 
 		{
-			if(idCity == null)
+			if(cityName == null)
 				throw new Exception("ID da cidade não informado");
 			
 			if(numFlight < 0)
 				throw new Exception("Número do voo negativo");
 			
-			flights.inseraNoFim(new Flights(idCity, numFlight));
+			flights.inseraNoFim(new Flights(cityName, numFlight));
 		}
 		catch(Exception ex)
 		{
@@ -61,18 +61,21 @@ public class Airports
 		}
 	}
 	
-	public void removeFlight(String cityId, int num) throws Exception
+	public void removeFlight(String destination, int num) throws Exception
 	{
 		if(num < 0)
 			throw new Exception("Número de voo inválido");
 		
 		try 
 		{
-			Flights toRemove = new Flights(cityId, num);
+			Flights toRemove = new Flights(destination, num);
 			
 			if(!flights.tem(toRemove))
+			{
+				System.out.println("não tem");
 				return;
-			
+			}
+				
 			flights.remova(toRemove);
 		}
 		catch(Exception ex)

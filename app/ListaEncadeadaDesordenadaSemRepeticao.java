@@ -111,7 +111,7 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X>
 
         if (this.tem(i))
             throw new Exception("Informacao ja existente");
-
+        
         X inserir=null;
         if (i instanceof Cloneable)
             inserir = meuCloneDeX (i);
@@ -220,7 +220,7 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X>
     }
 
     public boolean tem (X i) throws Exception
-    {
+    {    	
 		if (i==null)
 		    throw new Exception ("Informacao ausente");
 		
@@ -229,8 +229,9 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X>
         while (atual!=null)
         {
             if (i.equals(atual.getInfo()))
+            {
                 return true;
-                
+            }   
             atual = atual.getProx();
         }
         
