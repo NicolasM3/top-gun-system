@@ -84,8 +84,8 @@ public class Airports
 	public String toString() 
 	{
 		String ret = "Cidade: " + this.city
-					+"\nCódigo do aeroporto: " + this.airportCod
-					+"Voos deste aeroporto: " + this.flights.toString();
+					+" Código do aeroporto: " + this.airportCod
+					+" Voos deste aeroporto: " + this.flights.toString();
 		
 		return ret;
 	}
@@ -117,13 +117,13 @@ public class Airports
 			return false;
 		if(!(obj instanceof Airports))
 			return false;
-		
+				
 		Airports airport = (Airports) obj;
-		if(this.city.equals(airport.city))
+		if(!(this.city.equals(airport.city)))
 			return false;
-		if(this.airportCod.equals(airport.airportCod))
+		if(!(this.airportCod.equals(airport.airportCod)))
 			return false;
-		if(this.flights.equals(airport.flights))
+		if(!(this.flights.equals(airport.flights)))
 			return false;
 		
 		return true;
