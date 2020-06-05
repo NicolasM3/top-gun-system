@@ -10,11 +10,27 @@ public class TestList
         {
             ListaEncadeadaDesordenadaSemRepeticao<String> lista = new ListaEncadeadaDesordenadaSemRepeticao<String> ();
 
-            System.out.println("Metodo inseraNoInicio()" + lista.inseraNoInicio("abc"));
+            System.out.println(lista.toString());
+            
+            System.out.println("insiraNoInicio(\"def\")");
+            lista.insiraNoInicio("def");
+            
+            System.out.println(lista.toString());
+            
+            System.out.println("insiraNoFim(\"uvw\")");
+            lista.insiraNoFim("ghi");
+            
+            System.out.println(lista.toString());
+            
+            System.out.println("insiraNoFim(\"xyz\")");
+            lista.insiraNoFim("jkl");
+            
+            System.out.println(lista.toString());
 
-            System.out.println("Metodo insiraNoFim()" + lista.insiraNoFim("xyz"));
-
-            System.out.println("Metodo toString() : " + lista.toString());
+            System.out.println("insiraNoInicio(\"abc\")");
+            lista.insiraNoInicio("abc");
+            
+            System.out.println(lista.toString());
         }
         catch (Exception ex)
         {

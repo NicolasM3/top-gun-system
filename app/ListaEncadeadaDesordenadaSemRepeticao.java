@@ -105,7 +105,7 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X>
             this.ultimo=this.primeiro;
     }
 
-    public void inseraNoFim(X i) throws Exception
+    public void insiraNoFim(X i) throws Exception
     {
         if (i==null)
             throw new Exception ("Informacao passada nula");
