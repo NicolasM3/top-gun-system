@@ -18,8 +18,10 @@ public class main
 			lista.inseraNoFim(new Airports("São Paulo", "GRU"));
 			
 			Airports atual = lista.getDoInicio();
-			atual.addFlight("1", 512);
-			atual.addFlight("1", 234);
+			atual.addFlight("Rio de Janeiro", 512);
+			atual.addFlight("Rio de Janeiro", 234);
+			System.out.println(atual.getFlights());
+			atual.removeFlight("Rio de Janeiro", 234);
 			System.out.println(atual.getFlights());
 		}
 		catch(Exception ex)
