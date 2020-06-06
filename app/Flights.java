@@ -11,6 +11,16 @@ public class Flights {
 		this.cod = cod;
 	}
 	
+	public String getCityName()
+	{
+		return this.cityName;
+	}
+	
+	public int getCod()
+	{
+		return this.cod;
+	}
+	
 	public String toString()
 	{
 		return "(Cidade de destino: " + this.cityName
@@ -34,4 +44,22 @@ public class Flights {
 		
 		return true;
 	}
+	
+	public int hashCode()
+	{
+		int ret = 3;
+		
+		ret = ret * 2 + new String(this.cityName)				.hashCode();
+		ret = ret * 2 + Integer.valueOf(this.cod)				.hashCode();
+		
+		if(ret < 0)
+			return ret * -1;
+		
+		return ret;
+	}
+	
+	public Flights clone() {
+		return this;
+	}
+	
 }
