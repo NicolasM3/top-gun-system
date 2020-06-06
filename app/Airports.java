@@ -38,9 +38,9 @@ public class Airports
 		this.airportCod = code;
 	}
 	
-	public String getFlights()
+	public ListaEncadeadaDesordenadaSemRepeticao getFlights()
 	{
-		return flights.toString();
+		return (ListaEncadeadaDesordenadaSemRepeticao) flights.clone();
 	}
 	
 	public void addFlight(String cityName, int numFlight) throws Exception
@@ -121,6 +121,8 @@ public class Airports
 		if(!(obj instanceof Airports))
 			return false;
 				
+
+	
 		Airports airport = (Airports) obj;
 		if(!(this.city.equals(airport.city)))
 			return false;
