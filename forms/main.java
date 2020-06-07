@@ -119,6 +119,16 @@ public class main extends JFrame {
 		contentPane.add(panel, BorderLayout.NORTH);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
+		JButton btnNewAirports = new JButton("Adicionar Aeroporto");
+		btnNewAirports.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FormAddAirport addAirport = new FormAddAirport();
+				addAirport.setVisible(true);
+				addAirport.setData(listaAirports);
+			}
+		});
+		panel.add(btnNewAirports);
+		
 		JLabel lbCidade = new JLabel("Cidade");
 		panel.add(lbCidade);
 		
