@@ -1,49 +1,128 @@
 package forms;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import java.awt.BorderLayout;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.Dimension;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
-public class FormFlights extends JFrame {
+import app.Airports;
+import app.Flights;
+import app.ListaEncadeadaDesordenadaSemRepeticao;
 
-	private JPanel contentPane;
-	private JTable table;
+public class FormFlights {
+
+	private JFrame frmTodosOsVoos;
+	private JTable tbAllFlights;
+	private static DefaultTableModel model;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FormFlights frame = new FormFlights();
-					frame.setVisible(true);
+			public void run(ListaEncadeadaDesordenadaSemRepeticao<Airports> airportsList) 
+			{
+				try 
+				{
+					FormFlights window = new FormFlights();
+					window.frmTodosOsVoos.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+			}
 		});
+	}
+	
+	public static void updateData(ListaEncadeadaDesordenadaSemRepeticao<Airports> airportsList)
+	{
+		try
+		{
+			Airports atual = airportsList.getPrimeiro();
+			Flights atualFlights = atual.getFlights().getPrimeiro();
+			ListaEncadeadaDesordenadaSemRepeticao<Flights> flightsAirport;
+			flightsAirport = atual.getFlights();
+			for(int i = 0; i < airportsList.getQtd(); i ++)
+			{
+				if(atual.getFlights().getQtd() > 0)
+				{
+					for(int e = 0; e < atual.getFlights().getQtd(); e++)
+					{
+						model.addRow(new Object[]{atualFlights.getCityName(), atualFlights.getCod(), atual.getCity(), atual.getAirportCod()});
+						
+						flightsAirport.removaDoInicio();
+						flightsAirport.insiraNoFim(atualFlights);
+						atualFlights = flightsAirport.getPrimeiro();
+					}
+				}
+
+				airportsList.removaDoInicio();
+				airportsList.insiraNoFim(atual);
+				atual = airportsList.getPrimeiro();
+			}
+		}
+		catch(Exception ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+		
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the application.
 	 */
 	public FormFlights() {
-		setTitle("Voos");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 450);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmTodosOsVoos = new JFrame();
+		frmTodosOsVoos.setTitle("Voos");
+		frmTodosOsVoos.setBounds(100, 100, 600, 450);
+		frmTodosOsVoos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frmTodosOsVoos.getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		table = new JTable();
-		contentPane.add(table, BorderLayout.CENTER);
+		JPanel panel = new JPanel();
+		frmTodosOsVoos.getContentPane().add(panel, BorderLayout.NORTH);
+		
+		JLabel lblNewLabel = new JLabel("Todos os voos");
+		panel.add(lblNewLabel);
+		
+		JPanel panel_1 = new JPanel();
+		frmTodosOsVoos.getContentPane().add(panel_1, BorderLayout.CENTER);
+		
+		model = new DefaultTableModel();
+		tbAllFlights = new JTable(model);
+		panel_1.add(tbAllFlights);
+		panel_1.add(tbAllFlights.getTableHeader(), BorderLayout.NORTH);
+		panel_1.add(tbAllFlights, BorderLayout.CENTER);
+		
+		// model
+		model.addColumn("Número do voo");
+		model.addColumn("Cidade Destino");
+		model.addColumn("Cidade natal");
+		model.addColumn("Aeroporto natal");
+		tbAllFlights.getColumnModel().getColumn(0).setMinWidth(200);
+		tbAllFlights.getColumnModel().getColumn(1).setMinWidth(50);
+		tbAllFlights.getColumnModel().getColumn(2).setMinWidth(200);
+		tbAllFlights.getColumnModel().getColumn(3).setMinWidth(50);
+	}
+
+	public void setVisible(boolean b) {
+		frmTodosOsVoos.setVisible(true);
+		
 	}
 
 }

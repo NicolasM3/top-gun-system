@@ -34,6 +34,7 @@ public class main extends JFrame {
 	private static JPanel panel_1;
 	private static Airports atual;
 	private static ListaEncadeadaDesordenadaSemRepeticao<Airports> listaAirports;
+	private static ListaEncadeadaDesordenadaSemRepeticao<Airports> clone;
 	private static JTable tbFlights;
 	private static DefaultTableModel model;
 
@@ -47,7 +48,7 @@ public class main extends JFrame {
 					main frame = new main();
 					frame.setVisible(true);
 					
-					listaAirports = new ListaEncadeadaDesordenadaSemRepeticao<Airports> ();
+					listaAirports = new ListaEncadeadaDesordenadaSemRepeticao<Airports>();
 					
 					listaAirports.insiraNoFim(new Airports("Brasília", "BSB"));
 					listaAirports.insiraNoFim(new Airports("Belo Horizonte", "CNF"));
@@ -55,9 +56,14 @@ public class main extends JFrame {
 					listaAirports.insiraNoFim(new Airports("Salvador", "SSA"));
 					listaAirports.insiraNoFim(new Airports("São Paulo", "GRU"));
 					
+									
+					atual = listaAirports.getUltimo();
+					atual.addFlight("Test3", 908);
 					atual = listaAirports.getPrimeiro();
 					atual.addFlight("Test", 123);
 					atual.addFlight("Test2", 122);
+					clone  = (ListaEncadeadaDesordenadaSemRepeticao<Airports>) listaAirports.clone();
+					
 					updateAirports();
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -192,8 +198,16 @@ public class main extends JFrame {
 		JButton btnExcuir = new JButton("Excluir");
 		panel_2.add(btnExcuir);
 		
-		JButton btnNewButton_2 = new JButton("Mostrar todos");
-		panel_2.add(btnNewButton_2);
+		JButton btnAllFlights = new JButton("Mostrar todos");
+		btnAllFlights.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FormFlights allFlights = new FormFlights();
+				allFlights.setVisible(true);
+				allFlights.updateData(clone);
+			}
+		});
+		panel_2.add(btnAllFlights);
+		
 	}
 
 }
