@@ -72,7 +72,7 @@ public class main extends JFrame {
 		});
 	}
 	
-	private static void updateAirports()
+	public static void updateAirports()
 	{
 		model.setRowCount(0);
 		txtCidade.setText(atual.getCity());
@@ -173,7 +173,7 @@ public class main extends JFrame {
 		panel_1.add(tbFlights);
 		panel_1.add(new JScrollPane(tbFlights));
 		panel_1.add(tbFlights.getTableHeader(), BorderLayout.NORTH);
-		panel_1.add(tbFlights, BorderLayout.CENTER);
+		//panel_1.add(tbFlights, BorderLayout.CENTER);
 		
 		// Columns 
 		model.addColumn("Número do voo");
@@ -193,6 +193,13 @@ public class main extends JFrame {
 		panel_2.add(lbFlights);
 		
 		JButton btnAddFlight = new JButton("Adicionar");
+		btnAddFlight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FormAddFlight addFlight = new FormAddFlight();
+				addFlight.setVisible(true);
+				addFlight.setAirport(atual);
+			}
+		});
 		panel_2.add(btnAddFlight);
 		
 		JButton btnExcuir = new JButton("Excluir");
