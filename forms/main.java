@@ -5,7 +5,15 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
+import app.Airports;
+import app.Flights;
+import app.ListaEncadeadaDesordenadaSemRepeticao;
+
 import javax.swing.JSplitPane;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -15,13 +23,19 @@ import java.awt.Insets;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JTable;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class main extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtCidade;
-	private JTextField txtCod;
-	private JTable tbFlights;
+	private static JTextField txtCidade;
+	private static JTextField txtCod;
+	private static JPanel panel_1;
+	private static Airports atual;
+	private static ListaEncadeadaDesordenadaSemRepeticao<Airports> listaAirports;
+	private static JTable tbFlights;
+	private static DefaultTableModel model;
 
 	/**
 	 * Launch the application.
@@ -32,11 +46,55 @@ public class main extends JFrame {
 				try {
 					main frame = new main();
 					frame.setVisible(true);
+					
+					listaAirports = new ListaEncadeadaDesordenadaSemRepeticao<Airports> ();
+					
+					listaAirports.insiraNoFim(new Airports("Brasília", "BSB"));
+					listaAirports.insiraNoFim(new Airports("Belo Horizonte", "CNF"));
+					listaAirports.insiraNoFim(new Airports("Rio de Janeiro", "GIG"));
+					listaAirports.insiraNoFim(new Airports("Salvador", "SSA"));
+					listaAirports.insiraNoFim(new Airports("São Paulo", "GRU"));
+					
+					atual = listaAirports.getPrimeiro();
+					atual.addFlight("Test", 123);
+					atual.addFlight("Test2", 122);
+					updateAirports();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+	}
+	
+	private static void updateAirports()
+	{
+		model.setRowCount(0);
+		txtCidade.setText(atual.getCity());
+		txtCod.setText(atual.getAirportCod());	
+		try {
+			ListaEncadeadaDesordenadaSemRepeticao<Flights> flights = atual.getFlights();	
+			Flights atualFlights = flights.getPrimeiro();
+			
+			if (model.getRowCount() > 0) {
+			    for (int i = model.getRowCount() - 1; i > -1; i--) {
+			    	model.removeRow(i);
+			    }
+			}
+			
+			for(int i = 0; i < flights.getQtd(); i++)
+			{
+					model.addRow(new Object[]{atualFlights.getCityName(), atualFlights.getCod(), atual.getCity(), atual.getAirportCod()});
+				
+					flights.removaDoInicio();
+					flights.insiraNoFim(atualFlights);
+					atualFlights = flights.getPrimeiro();
+			}
+			
+			
+			panel_1.add(tbFlights);
+		}
+		catch(Exception ex)
+		{}
 	}
 
 	/**
@@ -70,16 +128,56 @@ public class main extends JFrame {
 		txtCod.setColumns(10);
 		
 		JButton btnPrevious = new JButton("Anterior");
+		btnPrevious.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					atual = listaAirports.getUltimo();
+					listaAirports.removaDoFim();
+					listaAirports.insiraNoInicio(atual);
+				}
+				catch(Exception e1) {
+					e1.printStackTrace();
+				}
+				updateAirports();
+			}
+		});
 		panel.add(btnPrevious);
 		
 		JButton btnNext = new JButton("Pr\u00F3ximo");
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try {
+					listaAirports.removaDoInicio();
+					listaAirports.insiraNoFim(atual);
+					atual = listaAirports.getPrimeiro();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				updateAirports();
+			}			
+		});
 		panel.add(btnNext);
 		
-		JPanel panel_1 = new JPanel();
+		panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
 		
-		tbFlights = new JTable();
+		model = new DefaultTableModel();
+		tbFlights = new JTable(model);
 		panel_1.add(tbFlights);
+		panel_1.add(new JScrollPane(tbFlights));
+		panel_1.add(tbFlights.getTableHeader(), BorderLayout.NORTH);
+		panel_1.add(tbFlights, BorderLayout.CENTER);
+		
+		// Columns 
+		model.addColumn("Número do voo");
+		model.addColumn("Cidade Destino");
+		model.addColumn("Cidade natal");
+		model.addColumn("Aeroporto natal");
+		tbFlights.getColumnModel().getColumn(0).setMinWidth(250);
+		tbFlights.getColumnModel().getColumn(1).setMinWidth(100);
+		tbFlights.getColumnModel().getColumn(2).setMinWidth(250);
+		tbFlights.getColumnModel().getColumn(3).setMinWidth(100);
 		
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.SOUTH);

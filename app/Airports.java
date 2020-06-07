@@ -38,7 +38,7 @@ public class Airports
 		this.airportCod = code;
 	}
 	
-	public ListaEncadeadaDesordenadaSemRepeticao getFlights()
+	public ListaEncadeadaDesordenadaSemRepeticao<Flights> getFlights()
 	{
 		return (ListaEncadeadaDesordenadaSemRepeticao) flights.clone();
 	}
@@ -53,7 +53,7 @@ public class Airports
 			if(numFlight < 0)
 				throw new Exception("Número do voo negativo");
 			
-			flights.inseraNoFim(new Flights(cityName, numFlight));
+			flights.insiraNoFim(new Flights(cityName, numFlight));
 		}
 		catch(Exception ex)
 		{

@@ -11,13 +11,13 @@ public class main
 		ListaEncadeadaDesordenadaSemRepeticao<Airports> lista = new ListaEncadeadaDesordenadaSemRepeticao<Airports> ();
 		try 
 		{
-			lista.inseraNoFim(new Airports("Brasília", "BSB"));
-			lista.inseraNoFim(new Airports("Belo Horizonte", "CNF"));
-			lista.inseraNoFim(new Airports("Rio de Janeiro", "GIG"));
-			lista.inseraNoFim(new Airports("Salvador", "SSA"));
-			lista.inseraNoFim(new Airports("São Paulo", "GRU"));
+			lista.insiraNoFim(new Airports("Brasília", "BSB"));
+			lista.insiraNoFim(new Airports("Belo Horizonte", "CNF"));
+			lista.insiraNoFim(new Airports("Rio de Janeiro", "GIG"));
+			lista.insiraNoFim(new Airports("Salvador", "SSA"));
+			lista.insiraNoFim(new Airports("São Paulo", "GRU"));
 			
-			Airports atual = lista.getDoInicio();
+			Airports atual = lista.getPrimeiro();
 			atual.addFlight("Rio de Janeiro", 512);
 			atual.addFlight("Rio de Janeiro", 234);
 			System.out.println(atual.getFlights());

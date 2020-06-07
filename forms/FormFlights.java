@@ -9,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Dimension;
 import javax.swing.JTable;
 
-public class Flights extends JFrame {
+public class FormFlights extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -21,7 +21,7 @@ public class Flights extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Flights frame = new Flights();
+					FormFlights frame = new FormFlights();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +33,7 @@ public class Flights extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Flights() {
+	public FormFlights() {
 		setTitle("Voos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 450);
