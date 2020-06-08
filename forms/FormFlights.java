@@ -47,21 +47,22 @@ public class FormFlights {
 	{
 		try
 		{
-			Airports atual = airportsList.getPrimeiro();
-			Flights atualFlights = atual.getFlights().getPrimeiro();
+			Airports atual = airportsList.getPrimeiro();		
 			ListaEncadeadaDesordenadaSemRepeticao<Flights> flightsAirport;
-			flightsAirport = atual.getFlights();
+			Flights atualFlights;
+			
 			for(int i = 0; i < airportsList.getQtd(); i ++)
-			{
-				if(atual.getFlights().getQtd() > 0)
+			{ 
+				flightsAirport = atual.getFlights();
+				if(flightsAirport.getQtd() > 0)
 				{
 					for(int e = 0; e < atual.getFlights().getQtd(); e++)
-					{
-						model.addRow(new Object[]{atualFlights.getCityName(), atualFlights.getCod(), atual.getCity(), atual.getAirportCod()});
-						
+					{						
+						atualFlights = flightsAirport.getPrimeiro();
 						flightsAirport.removaDoInicio();
 						flightsAirport.insiraNoFim(atualFlights);
-						atualFlights = flightsAirport.getPrimeiro();
+						
+						model.addRow(new Object[]{atualFlights.getCityName(), atualFlights.getCod(), atual.getCity(), atual.getAirportCod()});
 					}
 				}
 

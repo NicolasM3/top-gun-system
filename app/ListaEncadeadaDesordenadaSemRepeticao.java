@@ -117,7 +117,11 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 			throw new Exception("A lista esta vazia");
 
 		this.ultimo = this.ultimo.getAnte();
-		this.ultimo.setProx(null);
+		
+		if(this.ultimo == null)
+			this.primeiro = null;
+		else
+			this.ultimo.setProx(null);
 
 	}
 
@@ -126,7 +130,11 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 			throw new Exception("A lista esta vazia");
 
 		this.primeiro = this.primeiro.getProx();
-		this.primeiro.setAnte(null);
+		
+		if(this.primeiro==null)
+			this.ultimo = null;
+		else
+			this.primeiro.setAnte(null);
 	}
 
 	public void remova(X i) throws Exception {
