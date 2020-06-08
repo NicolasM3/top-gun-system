@@ -1,34 +1,18 @@
 package forms;
 
-import java.awt.EventQueue;
-import java.awt.Frame;
-
-import javax.swing.JFrame;
 import java.awt.BorderLayout;
-import javax.swing.JPanel;
+import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import net.miginfocom.swing.MigLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import app.Airports;
-
-import java.awt.GridLayout;
-import javax.swing.JTextField;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.SpringLayout;
-import javax.swing.JSplitPane;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JToggleButton;
-import com.jgoodies.forms.layout.FormSpecs;
-import java.awt.Component;
-import javax.swing.Box;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class FormAddFlight {
 

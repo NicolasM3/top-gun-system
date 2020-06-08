@@ -34,7 +34,6 @@ public class main extends JFrame {
 	private static JPanel panel_1;
 	private static Airports atual;
 	private static ListaEncadeadaDesordenadaSemRepeticao<Airports> listaAirports;
-	private static ListaEncadeadaDesordenadaSemRepeticao<Airports> clone;
 	private static JTable tbFlights;
 	private static DefaultTableModel model;
 
@@ -55,14 +54,12 @@ public class main extends JFrame {
 					listaAirports.insiraNoFim(new Airports("Rio de Janeiro", "GIG"));
 					listaAirports.insiraNoFim(new Airports("Salvador", "SSA"));
 					listaAirports.insiraNoFim(new Airports("São Paulo", "GRU"));
-					
-									
+														
 					atual = listaAirports.getUltimo();
 					atual.addFlight("Test3", 908);
 					atual = listaAirports.getPrimeiro();
 					atual.addFlight("Test", 123);
 					atual.addFlight("Test2", 122);
-					clone  = (ListaEncadeadaDesordenadaSemRepeticao<Airports>) listaAirports.clone();
 					
 					updateAirports();
 				} catch (Exception e) {
@@ -185,7 +182,7 @@ public class main extends JFrame {
 		panel_1.add(tbFlights);
 		panel_1.add(new JScrollPane(tbFlights));
 		panel_1.add(tbFlights.getTableHeader(), BorderLayout.NORTH);
-		//panel_1.add(tbFlights, BorderLayout.CENTER);
+		panel_1.add(tbFlights, BorderLayout.CENTER);
 		
 		// Columns 
 		model.addColumn("Cidade Destino");
@@ -229,7 +226,7 @@ public class main extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				FormFlights allFlights = new FormFlights();
 				allFlights.setVisible(true);
-				allFlights.updateData(clone);
+				allFlights.updateData(listaAirports);
 			}
 		});
 		panel_2.add(btnAllFlights);
