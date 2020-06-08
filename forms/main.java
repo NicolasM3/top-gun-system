@@ -185,7 +185,7 @@ public class main extends JFrame {
 		panel_1.add(tbFlights);
 		panel_1.add(new JScrollPane(tbFlights));
 		panel_1.add(tbFlights.getTableHeader(), BorderLayout.NORTH);
-		panel_1.add(tbFlights, BorderLayout.CENTER);
+		//panel_1.add(tbFlights, BorderLayout.CENTER);
 		
 		// Columns 
 		model.addColumn("Cidade Destino");
@@ -215,6 +215,13 @@ public class main extends JFrame {
 		panel_2.add(btnAddFlight);
 		
 		JButton btnExcuir = new JButton("Excluir");
+		btnExcuir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FormDelFlight delFlight = new FormDelFlight();
+				delFlight.setVisible(true);
+				delFlight.setAirport(atual);
+			}
+		});
 		panel_2.add(btnExcuir);
 		
 		JButton btnAllFlights = new JButton("Mostrar todos");
