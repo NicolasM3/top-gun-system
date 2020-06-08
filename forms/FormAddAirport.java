@@ -99,6 +99,12 @@ public class FormAddAirport {
 		panel_2.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JButton btnClear = new JButton("Limpar Campos");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtCityAirport.setText("");
+				txtCod.setText("");
+			}
+		});
 		panel_2.add(btnClear);
 		
 		JButton btnSave = new JButton("Salvar");

@@ -110,8 +110,8 @@ public class FormFlights {
 		panel_1.add(tbAllFlights, BorderLayout.CENTER);
 		
 		// model
-		model.addColumn("Número do voo");
 		model.addColumn("Cidade Destino");
+		model.addColumn("Número do voo");
 		model.addColumn("Cidade natal");
 		model.addColumn("Aeroporto natal");
 		tbAllFlights.getColumnModel().getColumn(0).setMinWidth(200);

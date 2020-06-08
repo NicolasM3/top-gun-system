@@ -133,6 +133,7 @@ public class main extends JFrame {
 		panel.add(lbCidade);
 		
 		txtCidade = new JTextField();
+		txtCidade.setEditable(false);
 		panel.add(txtCidade);
 		txtCidade.setColumns(10);
 		
@@ -140,6 +141,7 @@ public class main extends JFrame {
 		panel.add(lbCod);
 		
 		txtCod = new JTextField();
+		txtCod.setEditable(false);
 		panel.add(txtCod);
 		txtCod.setColumns(10);
 		
@@ -183,11 +185,11 @@ public class main extends JFrame {
 		panel_1.add(tbFlights);
 		panel_1.add(new JScrollPane(tbFlights));
 		panel_1.add(tbFlights.getTableHeader(), BorderLayout.NORTH);
-		//panel_1.add(tbFlights, BorderLayout.CENTER);
+		panel_1.add(tbFlights, BorderLayout.CENTER);
 		
 		// Columns 
-		model.addColumn("Número do voo");
 		model.addColumn("Cidade Destino");
+		model.addColumn("Número do voo");
 		model.addColumn("Cidade natal");
 		model.addColumn("Aeroporto natal");
 		tbFlights.getColumnModel().getColumn(0).setMinWidth(250);
