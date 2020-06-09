@@ -5,28 +5,48 @@ public class Flights {
 	protected String cityName;
 	protected int cod;
 	
+	/**
+	 * Construtor da classe
+	 * @param city		Cidade de destino do voo
+	 * @param cod		Código do voo
+	 */
 	public Flights(String city, int cod)
 	{
 		this.cityName = city;
 		this.cod = cod;
 	}
 	
+	/**
+	 * Retorna o nome do destino
+	 * @return			Nome do destino
+	 */
 	public String getCityName()
 	{
 		return this.cityName;
 	}
 	
+	/**
+	 * Retorna o código do voo
+	 * @return			Código do voo
+	 */
 	public int getCod()
 	{
 		return this.cod;
 	}
 	
+	/**
+	 * Rotorna os dados da classe em formato de String
+	 */
 	public String toString()
 	{
 		return "(Cidade de destino: " + this.cityName
 				+" Codigo do voo: " + this.cod + ")";
 	}
 	
+	/**
+	 * Verifica se um obj é igual a este objeto
+	 * @param obj		Objeto a ser comparado com este objeto
+	 */
 	public boolean equals(Object obj)
 	{
 		if(this == obj)
@@ -45,6 +65,9 @@ public class Flights {
 		return true;
 	}
 	
+	/**
+	 * Calcula o hashcode da classe
+	 */
 	public int hashCode()
 	{
 		int ret = 3;
@@ -58,6 +81,9 @@ public class Flights {
 		return ret;
 	}
 	
+	/**
+	 * Retorna um clone desse objeto
+	 */
 	public Flights clone() {
 		return this;
 	}

@@ -6,17 +6,31 @@ public class Airports
 	protected String airportCod;
 	protected ListaEncadeadaDesordenadaSemRepeticao<Flights> flights = new ListaEncadeadaDesordenadaSemRepeticao<Flights>();
 	
+	/**
+	 * Construtor da classe
+	 * @param cityName			Cidade do aeroporto	
+	 * @param cod				Código do aeroporto
+	 */
 	public Airports(String cityName, String cod)
 	{
 		this.city = cityName;
 		this.airportCod = cod;
 	}
-		
+	
+	/**
+	 * Retorna a cidade em que o aeroporto esta situado	
+	 * @return					Cidade do aeroporto
+	 */
 	public String getCity()
 	{
 		return this.city;
 	}
 	
+	/**
+	 * Define a cidade em que o aeroporto esta situado
+	 * @param name				Nome da cidade
+	 * @throws Exception		Se nenhum nome for passado
+	 */
 	public void setCity(String name) throws Exception
 	{
 		if(name == null)
@@ -25,11 +39,20 @@ public class Airports
 		this.city = name;
 	}
 	
+	/**
+	 * Retorna o código do aeroporto
+	 * @return					Código do aeroporto
+	 */
 	public String getAirportCod()
 	{
 		return this.airportCod;
 	}
 	
+	/**
+	 * Define o código do aeroporto
+	 * @param code				Código do aeroporto
+	 * @throws Exception		Se o código passado for nulo
+	 */
 	public void setAirportCod(String code) throws Exception
 	{
 		if(code == null)
@@ -38,11 +61,21 @@ public class Airports
 		this.airportCod = code;
 	}
 	
+	/**
+	 * Retrona uma lista contendo todos os voos
+	 * @return					Lista com todos os voos	
+	 */
 	public ListaEncadeadaDesordenadaSemRepeticao<Flights> getFlights()
 	{
 		return (ListaEncadeadaDesordenadaSemRepeticao) flights.clone();
 	}
 	
+	/**
+	 * Adiciona um voo no aeroporto
+	 * @param cityName			Cidade de destino do voo
+	 * @param numFlight			Número do voo
+	 * @throws Exception		Se um dos parâmetro estiver errado
+	 */
 	public void addFlight(String cityName, int numFlight) throws Exception
 	{
 		try 
@@ -61,6 +94,12 @@ public class Airports
 		}
 	}
 	
+	/**
+	 * Remove um voo 
+	 * @param destination 		Destino do voo a ser removido
+	 * @param num				Número do voo a ser removido
+	 * @throws Exception		Se um dos parâmetro estiver errado
+	 */
 	public void removeFlight(String destination, int num) throws Exception
 	{
 		if(num < 0)
@@ -84,6 +123,11 @@ public class Airports
 		}
 	}
 	
+	// GAULES TEM A 5 MELHOR HOWL DO MUNDO
+	
+	/**
+	 * Rotorna os dados da classe em formato de String
+	 */
 	public String toString() 
 	{
 		String ret = "Cidade: " + this.city
@@ -93,6 +137,9 @@ public class Airports
 		return ret;
 	}
 	
+	/**
+	 * Calcula o hashcode da classe
+	 */
 	public int hashCode()
 	{		
 		int ret = 3;
@@ -112,6 +159,10 @@ public class Airports
 		
 	}
 	
+	/**
+	 * Verifica se um obj é igual a este objeto
+	 * @param obj		Objeto a ser comparado com este objeto
+	 */
 	public boolean equals(Object obj)
 	{
 		if(this == obj)
@@ -135,6 +186,10 @@ public class Airports
 		
 	}
 	
+	/**
+	 * Construtor de cópia
+	 * @param modelo			Objeto original a ser clonado
+	 */
 	public Airports(Airports modelo) throws Exception
 	{
 		if(modelo == null)
@@ -145,6 +200,9 @@ public class Airports
 		this.flights = (ListaEncadeadaDesordenadaSemRepeticao<Flights>)modelo.flights.clone();
 	}
 	
+	/**
+	 * Clona o objeto
+	 */
 	public Object clone()
 	{
 		Airports ret = null;
