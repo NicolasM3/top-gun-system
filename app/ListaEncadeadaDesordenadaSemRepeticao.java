@@ -71,7 +71,7 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 			throw new Exception("Infomacao passada nula");
 
 		if (this.tem(i))
-			throw new Exception("Informacao j� existente");
+			throw new Exception("Informacao ja existente");
 
 		X inserir = null;
 		if (i instanceof Cloneable)
@@ -249,9 +249,33 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 		return this.primeiro == null;
 	}
 
-	// !TODO INVERTASE
+	public void invertaSe() {
+		if (this.primeiro == null)
+			return;
+		
+		if (this.primeiro.getProx() == null)
+			return;
+		
+		ListaEncadeadaDesordenadaSemRepeticao<X> inversao = new ListaEncadeadaDesordenadaSemRepeticao<X>();
+		
+		inversao = this.getInversao();
+		
+		this.primeiro = inversao.primeiro;
+		this.ultimo = inversao.ultimo;
+		
+	}
 
-	// !TODO INVERSAO
+	public ListaEncadeadaDesordenadaSemRepeticao<X> getInversao() {
+		ListaEncadeadaDesordenadaSemRepeticao<X> ret = new ListaEncadeadaDesordenadaSemRepeticao<X>();
+		
+		for (No atual = this.primeiro; atual != null; atual = atual.getProx()) {
+			try {
+				ret.insiraNoInicio(atual.getInfo());
+			} catch (Exception e) {}
+		}
+		
+		return ret;
+	}
 
 	public String toString() {
 		String ret = "[";

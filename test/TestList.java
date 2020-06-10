@@ -26,7 +26,15 @@ public class TestList {
 
 			System.out.println("insiraNoInicio(\"abc\")");
 			lista.insiraNoInicio("abc");
-
+			
+			System.out.println(lista.toString() + " qtd: " + lista.getQtd() + "\n");
+			
+			System.out.print("getInversao(): ");
+			System.out.println(lista.getInversao() + "\n");
+			
+			System.out.println("invertaSe()");
+			lista.invertaSe();
+			
 			System.out.println(lista.toString() + " qtd: " + lista.getQtd() + "\n");
 
 			System.out.println("removaDoFim()");
