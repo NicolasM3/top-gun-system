@@ -106,7 +106,7 @@ public class FormDelFlight {
 		panel_2.add(panel_3, BorderLayout.WEST);
 		panel_3.setLayout(new MigLayout("", "[69px][][grow][][grow][grow][]", "[14px][][][][][][][]"));
 		
-		JLabel lbCodFlight = new JLabel("N\u00FAmero do voo");
+		JLabel lbCodFlight = new JLabel("Número do voo");
 		panel_3.add(lbCodFlight, "cell 0 2,alignx left,aligny center");
 		
 		txtCodFlight = new JTextField();

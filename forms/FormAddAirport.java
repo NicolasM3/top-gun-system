@@ -66,7 +66,7 @@ public class FormAddAirport {
 		txtCityAirport.setColumns(10);
 		panel_3.add(txtCityAirport);
 		
-		JLabel lbCodAirport = new JLabel("C\u00F3digo aeroporto");
+		JLabel lbCodAirport = new JLabel("Código aeroporto");
 		panel_3.add(lbCodAirport);
 		
 		txtCod = new JTextField();

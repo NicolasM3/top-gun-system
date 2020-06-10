@@ -9,7 +9,7 @@ public class Airports
 	/**
 	 * Construtor da classe
 	 * @param cityName			Cidade do aeroporto	
-	 * @param cod				Código do aeroporto
+	 * @param cod				CÃ³digo do aeroporto
 	 */
 	public Airports(String cityName, String cod)
 	{
@@ -40,8 +40,8 @@ public class Airports
 	}
 	
 	/**
-	 * Retorna o código do aeroporto
-	 * @return					Código do aeroporto
+	 * Retorna o cï¿½digo do aeroporto
+	 * @return					CÃ³digo do aeroporto
 	 */
 	public String getAirportCod()
 	{
@@ -49,14 +49,14 @@ public class Airports
 	}
 	
 	/**
-	 * Define o código do aeroporto
-	 * @param code				Código do aeroporto
-	 * @throws Exception		Se o código passado for nulo
+	 * Define o cï¿½digo do aeroporto
+	 * @param code				CÃ³digo do aeroporto
+	 * @throws Exception		Se o cÃ³digo passado for nulo
 	 */
 	public void setAirportCod(String code) throws Exception
 	{
 		if(code == null)
-			throw new Exception("Nenhum código passado");
+			throw new Exception("Nenhum cÃ³digo passado");
 		
 		this.airportCod = code;
 	}
@@ -73,18 +73,18 @@ public class Airports
 	/**
 	 * Adiciona um voo no aeroporto
 	 * @param cityName			Cidade de destino do voo
-	 * @param numFlight			Número do voo
-	 * @throws Exception		Se um dos parâmetro estiver errado
+	 * @param numFlight			NÃºmero do voo
+	 * @throws Exception		Se um dos parÃ¢metros estiver errado
 	 */
 	public void addFlight(String cityName, int numFlight) throws Exception
 	{
 		try 
 		{
 			if(cityName == null)
-				throw new Exception("ID da cidade não informado");
+				throw new Exception("ID da cidade nÃ£o informado");
 			
 			if(numFlight < 0)
-				throw new Exception("Número do voo negativo");
+				throw new Exception("NÃºmero do voo negativo");
 			
 			flights.insiraNoFim(new Flights(cityName, numFlight));
 		}
@@ -97,13 +97,13 @@ public class Airports
 	/**
 	 * Remove um voo 
 	 * @param destination 		Destino do voo a ser removido
-	 * @param num				Número do voo a ser removido
-	 * @throws Exception		Se um dos parâmetro estiver errado
+	 * @param num				Nï¿½mero do voo a ser removido
+	 * @throws Exception		Se um dos parï¿½metro estiver errado
 	 */
 	public void removeFlight(String destination, int num) throws Exception
 	{
 		if(num < 0)
-			throw new Exception("Número de voo inválido");
+			throw new Exception("NÃºmero do voo invÃ¡lido");
 		
 		try 
 		{
@@ -111,7 +111,7 @@ public class Airports
 			
 			if(!flights.tem(toRemove))
 			{
-				System.out.println("não tem");
+				System.out.println("nÃ£o tem");
 				return;
 			}
 				
@@ -131,7 +131,7 @@ public class Airports
 	public String toString() 
 	{
 		String ret = "Cidade: " + this.city
-					+" Código do aeroporto: " + this.airportCod
+					+" CÃ³digo do aeroporto " + this.airportCod
 					+" Voos deste aeroporto: " + this.flights.toString();
 		
 		return ret;
@@ -160,7 +160,7 @@ public class Airports
 	}
 	
 	/**
-	 * Verifica se um obj é igual a este objeto
+	 * Verifica se um obj Ã© igual a este objeto
 	 * @param obj		Objeto a ser comparado com este objeto
 	 */
 	public boolean equals(Object obj)
@@ -187,7 +187,7 @@ public class Airports
 	}
 	
 	/**
-	 * Construtor de cópia
+	 * Construtor de cÃ³pia
 	 * @param modelo			Objeto original a ser clonado
 	 */
 	public Airports(Airports modelo) throws Exception

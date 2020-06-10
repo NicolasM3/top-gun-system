@@ -8,7 +8,7 @@ public class Flights {
 	/**
 	 * Construtor da classe
 	 * @param city		Cidade de destino do voo
-	 * @param cod		Código do voo
+	 * @param cod		CÃ³digo do voo
 	 */
 	public Flights(String city, int cod)
 	{
@@ -26,8 +26,8 @@ public class Flights {
 	}
 	
 	/**
-	 * Retorna o código do voo
-	 * @return			Código do voo
+	 * Retorna o cï¿½digo do voo
+	 * @return			CÃ³digo do voo
 	 */
 	public int getCod()
 	{
@@ -44,7 +44,7 @@ public class Flights {
 	}
 	
 	/**
-	 * Verifica se um obj é igual a este objeto
+	 * Verifica se um obj Ã© igual a este objeto
 	 * @param obj		Objeto a ser comparado com este objeto
 	 */
 	public boolean equals(Object obj)

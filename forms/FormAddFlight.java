@@ -67,7 +67,7 @@ public class FormAddFlight {
 		txtCityDest.setColumns(10);
 		panel_3.add(txtCityDest);
 		
-		JLabel lbCodFlight = new JLabel("C\u00F3digo do voo");
+		JLabel lbCodFlight = new JLabel("Código do voo");
 		panel_3.add(lbCodFlight);
 		
 		txtCodAirport = new JTextField();

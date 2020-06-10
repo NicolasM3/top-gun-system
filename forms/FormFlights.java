@@ -112,7 +112,7 @@ public class FormFlights {
 		
 		// model
 		model.addColumn("Cidade Destino");
-		model.addColumn("Número do voo");
+		model.addColumn("NÃºmero do voo");
 		model.addColumn("Cidade natal");
 		model.addColumn("Aeroporto natal");
 		tbAllFlights.getColumnModel().getColumn(0).setMinWidth(200);
