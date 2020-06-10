@@ -26,7 +26,7 @@ public class Flights {
 	}
 	
 	/**
-	 * Retorna o c�digo do voo
+	 * Retorna o código do voo
 	 * @return			Código do voo
 	 */
 	public int getCod()

@@ -40,7 +40,7 @@ public class Airports
 	}
 	
 	/**
-	 * Retorna o c�digo do aeroporto
+	 * Retorna o código do aeroporto
 	 * @return					Código do aeroporto
 	 */
 	public String getAirportCod()
@@ -49,7 +49,7 @@ public class Airports
 	}
 	
 	/**
-	 * Define o c�digo do aeroporto
+	 * Define o código do aeroporto
 	 * @param code				Código do aeroporto
 	 * @throws Exception		Se o código passado for nulo
 	 */
@@ -97,8 +97,8 @@ public class Airports
 	/**
 	 * Remove um voo 
 	 * @param destination 		Destino do voo a ser removido
-	 * @param num				N�mero do voo a ser removido
-	 * @throws Exception		Se um dos par�metro estiver errado
+	 * @param num				Número do voo a ser removido
+	 * @throws Exception		Se um dos parâmetros estiver errado
 	 */
 	public void removeFlight(String destination, int num) throws Exception
 	{
