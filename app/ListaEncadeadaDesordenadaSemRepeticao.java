@@ -2,55 +2,105 @@ package app;
 
 import java.lang.reflect.*;
 
+/**
+ * Classe Lista, representa uma lista encadeada duplamente ligada desordenada sem repetição.
+ *
+ * @param <X> tipo a ser armazenado
+ */
 public class ListaEncadeadaDesordenadaSemRepeticao<X> {
+	/**
+	 * Classe Nó, representa um elemento da lista.
+	 */
 	public class No {
 		private No ante;
 		private X info;
 		private No prox;
 
+		/**
+		 * Construtor de classe.
+		 * @param a Nó anterior a este.
+		 * @param i Os dados deste Nó.
+		 * @param p Nó seguinte a este.
+		 */
 		public No(No a, X i, No p) {
 			this.ante = a;
 			this.info = i;
 			this.prox = p;
 		}
 
+		/**
+		 * Construtor de classe.
+		 * @param i Os dados deste Nó.
+		 */
 		public No(X i) {
 			this.ante = null;
 			this.info = i;
 			this.prox = null;
 		}
 
+		/**
+		 * Get do Nó anterior a este.
+		 * @return o Nó anterior
+		 */
 		public No getAnte() {
 			return this.ante;
 		}
 
+		/**
+		 * Get dos dados armazenados neste Nó.
+		 * @return os dados deste Nó
+		 */
 		public X getInfo() {
 			return this.info;
 		}
 
+		/**
+		 * Get do Nó seguinte a este.
+		 * @return o próximo Nó
+		 */
 		public No getProx() {
 			return this.prox;
 		}
 
+		/**
+		 * Define o Nó anterior a este
+		 * @param a o Nó anterior
+		 */
 		public void setAnte(No a) {
 			this.ante = a;
 		}
 
+		/**
+		 * Define os dados deste Nó.
+		 * @param i os dados deste Nó
+		 */
 		public void setInfo(X i) {
 			this.info = i;
 		}
 
+		/**
+		 * Define o Nó seguinte a este
+		 * @param p o próximo Nó
+		 */
 		public void setProx(No p) {
 			this.prox = p;
 		}
 	}
 
 	protected No primeiro, ultimo;
-
+	
+	/**
+	 * Construtor de classe
+	 */
 	public ListaEncadeadaDesordenadaSemRepeticao() {
 		this.primeiro = this.ultimo = null;
 	}
 
+	/**
+	 * Retorna um clone do objeto.
+	 * @param x objeto a ser clonado
+	 * @return clone de x
+	 */
 	protected X meuCloneDeX(X x) {
 		X ret = null;
 
@@ -66,6 +116,12 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 		return ret;
 	}
 
+	/**
+	 * Insere um Nó no início da lista.
+	 * @param i Nó a ser inserido
+	 * @throws Exception caso i seja nulo
+	 * @throws Exception caso i já exista na lista
+	 */
 	public void insiraNoInicio(X i) throws Exception {
 		if (i == null)
 			throw new Exception("Infomacao passada nula");
@@ -90,6 +146,12 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 			this.ultimo = this.primeiro;
 	}
 
+	/**
+	 * Insere um Nó no fim da lista.
+	 * @param i Nó a ser inserido
+	 * @throws Exception caso i seja nulo
+	 * @throws Exception caso i já exista na lista
+	 */
 	public void insiraNoFim(X i) throws Exception {
 		if (i == null)
 			throw new Exception("Informacao passada nula");
@@ -112,6 +174,10 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 		}
 	}
 
+	/**
+	 * Remove o Nó do fim da lista.
+	 * @throws Exception caso a lista esteja vazia
+	 */
 	public void removaDoFim() throws Exception {
 		if (this.isVazia())
 			throw new Exception("A lista esta vazia");
@@ -122,9 +188,12 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 			this.primeiro = null;
 		else
 			this.ultimo.setProx(null);
-
 	}
 
+	/**
+	 * Remove o Nó do início da lista.
+	 * @throws Exception caso a lista esteja vazia
+	 */
 	public void removaDoInicio() throws Exception {
 		if (this.isVazia())
 			throw new Exception("A lista esta vazia");
@@ -137,6 +206,12 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 			this.primeiro.setAnte(null);
 	}
 
+	/**
+	 * Remove o Nó indicado
+	 * @param i Nó a ser removido
+	 * @throws Exception caso i seja nulo
+	 * @throws Exception caso a lista esteja vazia
+	 */
 	public void remova(X i) throws Exception {
 		if (i == null)
 			throw new Exception("Informacao passada nula");
@@ -194,6 +269,12 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 		}
 	}
 
+	/**
+	 * Verifica se um Nó está presente na lista
+	 * @param i o Nó a ser verificado
+	 * @return se o Nó está na lista
+	 * @throws Exception caso i seja nulo
+	 */
 	public boolean tem(X i) throws Exception {
 		if (i == null)
 			throw new Exception("Informacao ausente");
@@ -210,6 +291,10 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 		return false;
 	}
 
+	/**
+	 * Get da quantidade de Nós na lista
+	 * @return a quantidade de Nós na lista
+	 */
 	public int getQtd() {
 		int ret = 0;
 
@@ -223,6 +308,11 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 		return ret;
 	}
 
+	/**
+	 * Get das informações do primeiro Nó
+	 * @return dados do primeiro Nó
+	 * @throws Exception caso a lista esteja vazia
+	 */
 	public X getPrimeiro() throws Exception {
 		if (this.isVazia())
 			throw new Exception("Lista vazia, nada a obter");
@@ -234,6 +324,11 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 		return ret;
 	}
 
+	/**
+	 * Get das informações do último Nó
+	 * @return dados do último Nó
+	 * @throws Exception caso a lista esteja vazia
+	 */
 	public X getUltimo() throws Exception {
 		if (this.isVazia())
 			throw new Exception("Lista vazia, nada a obter");
@@ -245,10 +340,17 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 		return ret;
 	}
 
+	/**
+	 * Verifica se a lista está vazia
+	 * @return se a lista está vazia
+	 */
 	public boolean isVazia() {
 		return this.primeiro == null;
 	}
 
+	/**
+	 * Inverte a ordem da lista
+	 */
 	public void invertaSe() {
 		if (this.primeiro == null)
 			return;
@@ -260,11 +362,25 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 		
 		inversao = this.getInversao();
 		
-		this.primeiro = inversao.primeiro;
-		this.ultimo = inversao.ultimo;
+		this.primeiro = new No(inversao.primeiro.getInfo());
+
+		No thisNo = this.primeiro;
+		No outroNo = inversao.primeiro.getProx();
+
+		while (outroNo != null) {
+			thisNo.setProx(new No(thisNo, outroNo.getInfo(), null));
+			thisNo = thisNo.getProx();
+			outroNo = outroNo.getProx();
+		}
+
+		this.ultimo = thisNo;
 		
 	}
 
+	/**
+	 * Retorna a inversão da lista
+	 * @return a lista, invertida
+	 */
 	public ListaEncadeadaDesordenadaSemRepeticao<X> getInversao() {
 		ListaEncadeadaDesordenadaSemRepeticao<X> ret = new ListaEncadeadaDesordenadaSemRepeticao<X>();
 		
@@ -336,6 +452,11 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 		return ret;
 	}
 
+	/**
+	 * Construtor de cópia
+	 * @param modelo lista a ser copiada
+	 * @throws Exception caso modelo seja nulo
+	 */
 	public ListaEncadeadaDesordenadaSemRepeticao(ListaEncadeadaDesordenadaSemRepeticao<X> modelo) throws Exception {
 		if (modelo == null)
 			throw new Exception("Modelo ausente");
