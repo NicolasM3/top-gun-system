@@ -49,17 +49,13 @@ public class main extends JFrame {
 					
 					listaAirports = new ListaEncadeadaDesordenadaSemRepeticao<Airports>();
 					
-					listaAirports.insiraNoFim(new Airports("BrasÃ­lia", "BSB"));
+					listaAirports.insiraNoFim(new Airports("Brasília", "BSB"));
 					listaAirports.insiraNoFim(new Airports("Belo Horizonte", "CNF"));
 					listaAirports.insiraNoFim(new Airports("Rio de Janeiro", "GIG"));
 					listaAirports.insiraNoFim(new Airports("Salvador", "SSA"));
-					listaAirports.insiraNoFim(new Airports("SÃ£o Paulo", "GRU"));
+					listaAirports.insiraNoFim(new Airports("São Paulo", "GRU"));
 														
-					atual = listaAirports.getUltimo();
-					atual.addFlight("Test3", 908);
-					atual = listaAirports.getPrimeiro();
-					atual.addFlight("Test", 123);
-					atual.addFlight("Test2", 122);
+					atual = listaAirports.getPrimeiro();			
 					
 					updateAirports();
 				} catch (Exception e) {
@@ -99,6 +95,7 @@ public class main extends JFrame {
 		catch(Exception ex)
 		{}
 	}
+	
 
 	/**
 	 * Create the frame.
@@ -158,7 +155,7 @@ public class main extends JFrame {
 		});
 		panel.add(btnPrevious);
 		
-		JButton btnNext = new JButton("PrÃ³ximo");
+		JButton btnNext = new JButton("Próximo");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -186,7 +183,7 @@ public class main extends JFrame {
 		
 		// Columns 
 		model.addColumn("Cidade Destino");
-		model.addColumn("NÃºmero do voo");
+		model.addColumn("Número do voo");
 		model.addColumn("Cidade natal");
 		model.addColumn("Aeroporto natal");
 		tbFlights.getColumnModel().getColumn(0).setMinWidth(250);
