@@ -49,11 +49,11 @@ public class main extends JFrame {
 					
 					listaAirports = new ListaEncadeadaDesordenadaSemRepeticao<Airports>();
 					
-					listaAirports.insiraNoFim(new Airports("Brasília", "BSB"));
+					listaAirports.insiraNoFim(new Airports("BrasÃ­lia", "BSB"));
 					listaAirports.insiraNoFim(new Airports("Belo Horizonte", "CNF"));
 					listaAirports.insiraNoFim(new Airports("Rio de Janeiro", "GIG"));
 					listaAirports.insiraNoFim(new Airports("Salvador", "SSA"));
-					listaAirports.insiraNoFim(new Airports("São Paulo", "GRU"));
+					listaAirports.insiraNoFim(new Airports("SÃ£o Paulo", "GRU"));
 														
 					atual = listaAirports.getPrimeiro();			
 					
@@ -155,7 +155,7 @@ public class main extends JFrame {
 		});
 		panel.add(btnPrevious);
 		
-		JButton btnNext = new JButton("Próximo");
+		JButton btnNext = new JButton("PrÃ³ximo");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -183,7 +183,7 @@ public class main extends JFrame {
 		
 		// Columns 
 		model.addColumn("Cidade Destino");
-		model.addColumn("Número do voo");
+		model.addColumn("NÃºmero do voo");
 		model.addColumn("Cidade natal");
 		model.addColumn("Aeroporto natal");
 		tbFlights.getColumnModel().getColumn(0).setMinWidth(250);

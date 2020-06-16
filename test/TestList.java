@@ -14,12 +14,12 @@ public class TestList {
 
 			System.out.println(lista.toString() + " qtd: " + lista.getQtd() + "\n");
 
-			System.out.println("insiraNoFim(\"uvw\")");
+			System.out.println("insiraNoFim(\"ghi\")");
 			lista.insiraNoFim("ghi");
 
 			System.out.println(lista.toString() + " qtd: " + lista.getQtd() + "\n");
 
-			System.out.println("insiraNoFim(\"xyz\")");
+			System.out.println("insiraNoFim(\"jkl\")");
 			lista.insiraNoFim("jkl");
 
 			System.out.println(lista.toString() + " qtd: " + lista.getQtd() + "\n");

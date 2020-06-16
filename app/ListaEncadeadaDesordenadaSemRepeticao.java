@@ -234,10 +234,9 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 
 		for (;;) {
 			if (atual == null)
-				throw new Exception("Lista esta vazia (Esse erro nao deveria acontecer)");
+				throw new Exception("Lista esta vazia");
 
 			if (i.equals(atual.getInfo())) {
-				// ### ATUAL NAO SERA O PRIMEIRO ###
 				if (atual == this.primeiro) {
 					this.primeiro = this.primeiro.getProx();
 
@@ -479,10 +478,10 @@ public class ListaEncadeadaDesordenadaSemRepeticao<X> {
 	}
 
 	public Object clone() {
-		ListaEncadeadaDesordenadaSemRepeticao ret = null;
+		ListaEncadeadaDesordenadaSemRepeticao<X> ret = null;
 
 		try {
-			ret = new ListaEncadeadaDesordenadaSemRepeticao(this);
+			ret = new ListaEncadeadaDesordenadaSemRepeticao<X>(this);
 		} catch (Exception e) {
 		}
 
